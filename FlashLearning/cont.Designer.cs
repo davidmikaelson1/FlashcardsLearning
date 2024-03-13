@@ -1,6 +1,6 @@
 ﻿namespace FlashLearning
 {
-    partial class cont
+    partial class account
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.numeUtilizator = new System.Windows.Forms.Label();
-            this.parola = new System.Windows.Forms.Label();
-            this.confirmaParola = new System.Windows.Forms.Label();
-            this.textNumeUtilizator = new System.Windows.Forms.TextBox();
-            this.textParola = new System.Windows.Forms.TextBox();
-            this.textConfirmaParola = new System.Windows.Forms.TextBox();
-            this.IntraInCont = new System.Windows.Forms.Button();
+            this.password = new System.Windows.Forms.Label();
+            this.reenter_password = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.TextBox();
+            this.password_text = new System.Windows.Forms.TextBox();
+            this.reenter_password_text = new System.Windows.Forms.TextBox();
+            this.log_in = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // numeUtilizator
@@ -45,107 +45,109 @@
             this.numeUtilizator.Location = new System.Drawing.Point(78, 101);
             this.numeUtilizator.Margin = new System.Windows.Forms.Padding(0);
             this.numeUtilizator.Name = "numeUtilizator";
-            this.numeUtilizator.Size = new System.Drawing.Size(282, 36);
+            this.numeUtilizator.Size = new System.Drawing.Size(164, 36);
             this.numeUtilizator.TabIndex = 0;
-            this.numeUtilizator.Text = "Nume de utilizator:";
+            this.numeUtilizator.Text = "Username:";
             // 
-            // parola
+            // password
             // 
-            this.parola.AutoSize = true;
-            this.parola.Enabled = false;
-            this.parola.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parola.ForeColor = System.Drawing.Color.Maroon;
-            this.parola.Location = new System.Drawing.Point(78, 156);
-            this.parola.Margin = new System.Windows.Forms.Padding(0);
-            this.parola.Name = "parola";
-            this.parola.Size = new System.Drawing.Size(116, 36);
-            this.parola.TabIndex = 1;
-            this.parola.Text = "Parola:";
-            this.parola.Visible = false;
+            this.password.AutoSize = true;
+            this.password.Enabled = false;
+            this.password.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.ForeColor = System.Drawing.Color.Maroon;
+            this.password.Location = new System.Drawing.Point(78, 156);
+            this.password.Margin = new System.Windows.Forms.Padding(0);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(157, 36);
+            this.password.TabIndex = 1;
+            this.password.Text = "Password:";
+            this.password.Visible = false;
             // 
-            // confirmaParola
+            // reenter_password
             // 
-            this.confirmaParola.AutoSize = true;
-            this.confirmaParola.Enabled = false;
-            this.confirmaParola.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmaParola.ForeColor = System.Drawing.Color.Maroon;
-            this.confirmaParola.Location = new System.Drawing.Point(78, 211);
-            this.confirmaParola.Margin = new System.Windows.Forms.Padding(0);
-            this.confirmaParola.Name = "confirmaParola";
-            this.confirmaParola.Size = new System.Drawing.Size(257, 36);
-            this.confirmaParola.TabIndex = 2;
-            this.confirmaParola.Text = "Confirma parola:";
-            this.confirmaParola.Visible = false;
+            this.reenter_password.AutoSize = true;
+            this.reenter_password.Enabled = false;
+            this.reenter_password.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reenter_password.ForeColor = System.Drawing.Color.Maroon;
+            this.reenter_password.Location = new System.Drawing.Point(78, 209);
+            this.reenter_password.Margin = new System.Windows.Forms.Padding(0);
+            this.reenter_password.Name = "reenter_password";
+            this.reenter_password.Size = new System.Drawing.Size(270, 36);
+            this.reenter_password.TabIndex = 2;
+            this.reenter_password.Text = "Reenter password:";
+            this.reenter_password.Visible = false;
+            this.reenter_password.Click += new System.EventHandler(this.confirmaParola_Click);
             // 
-            // textNumeUtilizator
+            // username
             // 
-            this.textNumeUtilizator.BackColor = System.Drawing.Color.Wheat;
-            this.textNumeUtilizator.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNumeUtilizator.ForeColor = System.Drawing.Color.Black;
-            this.textNumeUtilizator.Location = new System.Drawing.Point(360, 101);
-            this.textNumeUtilizator.Margin = new System.Windows.Forms.Padding(0);
-            this.textNumeUtilizator.Name = "textNumeUtilizator";
-            this.textNumeUtilizator.Size = new System.Drawing.Size(274, 44);
-            this.textNumeUtilizator.TabIndex = 3;
+            this.username.BackColor = System.Drawing.Color.Wheat;
+            this.username.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.Color.Black;
+            this.username.Location = new System.Drawing.Point(235, 101);
+            this.username.Margin = new System.Windows.Forms.Padding(0);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(399, 44);
+            this.username.TabIndex = 3;
             // 
-            // textParola
+            // password_text
             // 
-            this.textParola.BackColor = System.Drawing.Color.Wheat;
-            this.textParola.Enabled = false;
-            this.textParola.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textParola.ForeColor = System.Drawing.Color.Black;
-            this.textParola.Location = new System.Drawing.Point(194, 154);
-            this.textParola.Margin = new System.Windows.Forms.Padding(0);
-            this.textParola.Name = "textParola";
-            this.textParola.Size = new System.Drawing.Size(440, 44);
-            this.textParola.TabIndex = 4;
-            this.textParola.UseSystemPasswordChar = true;
-            this.textParola.Visible = false;
+            this.password_text.BackColor = System.Drawing.Color.Wheat;
+            this.password_text.Enabled = false;
+            this.password_text.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password_text.ForeColor = System.Drawing.Color.Black;
+            this.password_text.Location = new System.Drawing.Point(228, 154);
+            this.password_text.Margin = new System.Windows.Forms.Padding(0);
+            this.password_text.Name = "password_text";
+            this.password_text.Size = new System.Drawing.Size(406, 44);
+            this.password_text.TabIndex = 4;
+            this.password_text.UseSystemPasswordChar = true;
+            this.password_text.Visible = false;
             // 
-            // textConfirmaParola
+            // reenter_password_text
             // 
-            this.textConfirmaParola.BackColor = System.Drawing.Color.Wheat;
-            this.textConfirmaParola.Enabled = false;
-            this.textConfirmaParola.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textConfirmaParola.ForeColor = System.Drawing.Color.Black;
-            this.textConfirmaParola.Location = new System.Drawing.Point(335, 211);
-            this.textConfirmaParola.Margin = new System.Windows.Forms.Padding(0);
-            this.textConfirmaParola.Name = "textConfirmaParola";
-            this.textConfirmaParola.Size = new System.Drawing.Size(299, 44);
-            this.textConfirmaParola.TabIndex = 5;
-            this.textConfirmaParola.UseSystemPasswordChar = true;
-            this.textConfirmaParola.Visible = false;
+            this.reenter_password_text.BackColor = System.Drawing.Color.Wheat;
+            this.reenter_password_text.Enabled = false;
+            this.reenter_password_text.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reenter_password_text.ForeColor = System.Drawing.Color.Black;
+            this.reenter_password_text.Location = new System.Drawing.Point(340, 209);
+            this.reenter_password_text.Margin = new System.Windows.Forms.Padding(0);
+            this.reenter_password_text.Name = "reenter_password_text";
+            this.reenter_password_text.Size = new System.Drawing.Size(294, 44);
+            this.reenter_password_text.TabIndex = 5;
+            this.reenter_password_text.UseSystemPasswordChar = true;
+            this.reenter_password_text.Visible = false;
+            this.reenter_password_text.TextChanged += new System.EventHandler(this.textConfirmaParola_TextChanged);
             // 
-            // IntraInCont
+            // log_in
             // 
-            this.IntraInCont.AutoSize = true;
-            this.IntraInCont.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.IntraInCont.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IntraInCont.ForeColor = System.Drawing.Color.Maroon;
-            this.IntraInCont.Location = new System.Drawing.Point(437, 268);
-            this.IntraInCont.Margin = new System.Windows.Forms.Padding(0);
-            this.IntraInCont.Name = "IntraInCont";
-            this.IntraInCont.Size = new System.Drawing.Size(197, 46);
-            this.IntraInCont.TabIndex = 6;
-            this.IntraInCont.Text = "Intra in cont";
-            this.IntraInCont.UseVisualStyleBackColor = false;
-            this.IntraInCont.Click += new System.EventHandler(this.button1_Click);
+            this.log_in.AutoSize = true;
+            this.log_in.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.log_in.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.log_in.ForeColor = System.Drawing.Color.Maroon;
+            this.log_in.Location = new System.Drawing.Point(408, 267);
+            this.log_in.Margin = new System.Windows.Forms.Padding(0);
+            this.log_in.Name = "log_in";
+            this.log_in.Size = new System.Drawing.Size(226, 46);
+            this.log_in.TabIndex = 6;
+            this.log_in.Text = "Log in";
+            this.log_in.UseVisualStyleBackColor = false;
+            this.log_in.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cont
+            // account
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(698, 424);
-            this.Controls.Add(this.IntraInCont);
-            this.Controls.Add(this.textConfirmaParola);
-            this.Controls.Add(this.textParola);
-            this.Controls.Add(this.textNumeUtilizator);
-            this.Controls.Add(this.confirmaParola);
-            this.Controls.Add(this.parola);
+            this.Controls.Add(this.log_in);
+            this.Controls.Add(this.reenter_password_text);
+            this.Controls.Add(this.password_text);
+            this.Controls.Add(this.username);
+            this.Controls.Add(this.reenter_password);
+            this.Controls.Add(this.password);
             this.Controls.Add(this.numeUtilizator);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "cont";
+            this.Name = "account";
             this.Text = "cont";
             this.Load += new System.EventHandler(this.login_Load);
             this.ResumeLayout(false);
@@ -156,11 +158,11 @@
         #endregion
 
         private System.Windows.Forms.Label numeUtilizator;
-        private System.Windows.Forms.Label parola;
-        private System.Windows.Forms.Label confirmaParola;
-        private System.Windows.Forms.TextBox textNumeUtilizator;
-        private System.Windows.Forms.TextBox textParola;
-        private System.Windows.Forms.TextBox textConfirmaParola;
-        private System.Windows.Forms.Button IntraInCont;
+        private System.Windows.Forms.Label password;
+        private System.Windows.Forms.Label reenter_password;
+        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.TextBox password_text;
+        private System.Windows.Forms.TextBox reenter_password_text;
+        private System.Windows.Forms.Button log_in;
     }
 }

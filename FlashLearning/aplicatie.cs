@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FlashLearning
 {
@@ -16,178 +9,173 @@ namespace FlashLearning
         SqlConnection con;
         SqlCommand cmd;
         string qs;
-        int st, dr, contor=-1, frmax=0;
+        int left, right, counter = -1, max_fr = 0;
 
         public aplicatie()
         {
             InitializeComponent();
         }
-        // functie pentru initializarea variabilei contor
-        private void initializeaza_contor()
+
+        // Utils:
+
+        // Function for initializing the counter variable
+        private void initialize_counter()
         {
             try
             {
-                if(cont.nu != string.Empty)
+                if (account.nu != string.Empty)
                 {
-                    qs = "SELECT MIN(Id) FROM FL WHERE Utilizator = '" + cont.nu + "' AND Frecventa!=0";
+                    qs = "SELECT MIN(Id) FROM FL WHERE Utilizator = '" + account.nu + "' AND Frecventa!=0";
                     cmd = new SqlCommand(qs, con);
-                    st = (int)(cmd.ExecuteScalar());
-                    qs = "SELECT MAX(Id) FROM FL WHERE Utilizator = '" + cont.nu + "' AND Frecventa!=0";
+                    left = (int)(cmd.ExecuteScalar());
+                    qs = "SELECT MAX(Id) FROM FL WHERE Utilizator = '" + account.nu + "' AND Frecventa!=0";
                     cmd = new SqlCommand(qs, con);
-                    dr = (int)(cmd.ExecuteScalar());
-                    contor = st;
-                    incepeSaInveti.Enabled = true;
+                    right = (int)(cmd.ExecuteScalar());
+                    counter = left;
+                    start_learning.Enabled = true;
                 }
-                // daca nu esti conectat
+                // If you're not connected to your account:
                 else
                 {
-                    MessageBox.Show("Intra in contul tau inainte de a incepe procesul de invatare!");
+                    MessageBox.Show("Log into your account before starting the learning process!");
                 }
             }
             catch
             {
-                incepeSaInveti.Enabled = false;
-                MessageBox.Show("Nu ai intrebari in baze de date!");
-                restart_interfata();
+                start_learning.Enabled = false;
+                MessageBox.Show("You have no questions in the database!");
+                restart_interface();
             }
         }
 
-        // functie pentru verificarea existentei id-ului cu valoarea contor
+        // Function for checking the existence of the ID with the counter value
         private bool exista_id(int i)
         {
-            qs = "SELECT Intrebare FROM FL WHERE Utilizator = '" + cont.nu + "' AND Id = '" + i ;
+            qs = "SELECT Intrebare FROM FL WHERE Utilizator = '" + account.nu + "' AND Id = '" + i;
             cmd = new SqlCommand(qs, con);
-            string aux= (string)cmd.ExecuteScalar();
-            if(aux!=string.Empty)
+            string aux = (string)cmd.ExecuteScalar();
+            if (aux != string.Empty)
                 return true;
             else
                 return false;
         }
 
-        // cauta cel mai mic id mai mare decat ultimul
-        // functie pentru generarea urmatorii valori a variabilei contor
-        private void creste_contor()
+        // Search for the smallest ID greater than the last one
+        // Function for generating the next values ​​of the counter variable.
+        private void increase_counter()
         {
-            calculeaza_frmax();
-            if(contor==dr)
-                initializeaza_contor();
-            else if(contor!=-1)
+            calculate_max_fr();
+            if (counter == right)
+                initialize_counter();
+            else if (counter != -1)
             {
-                qs = "SELECT MIN(Id) FROM FL WHERE Utilizator = '" + cont.nu + "' AND Id>" + contor + "AND Id<="+ dr;
+                qs = "SELECT MIN(Id) FROM FL WHERE Utilizator = '" + account.nu + "' AND Id>" + counter + "AND Id<=" + right;
                 cmd = new SqlCommand(qs, con);
-                contor = (int)cmd.ExecuteScalar();
+                counter = (int)cmd.ExecuteScalar();
             }
-            
+
         }
 
-        // afiseaza intrebarea cu id-ul contor, daca aceasta are acelasi user ca cel conectat
-        private void afisare()
+        // Display the question with the counter ID if it has the same user as the one connected.
+        private void print_next_question()
         {
-            qs = "SELECT Frecventa FROM FL WHERE Id= " + contor;
+            qs = "SELECT Frecventa FROM FL WHERE Id= " + counter;
             cmd = new SqlCommand(qs, con);
-            int fr= Convert.ToInt32(cmd.ExecuteScalar());
-            /*
-            if(fr==0)
-            {
-                MessageBox.Show("Felicitari! Ai finalizat procesul de invatare.");
-                restart_interfata();
-                incepeSaInveti.Enabled = false;
-                return;
-            }*/
-            qs = "SELECT Intrebare FROM FL WHERE Id = " + contor;
+            int fr = Convert.ToInt32(cmd.ExecuteScalar());
+            qs = "SELECT Intrebare FROM FL WHERE Id = " + counter;
             cmd = new SqlCommand(qs, con);
-            textIntrebare.Text = (string)cmd.ExecuteScalar();
-            textRaspuns.Text = "Scrie aici raspunsul";
+            question_text.Text = (string)cmd.ExecuteScalar();
+            answer_text.Text = "Scrie aici raspunsul";
         }
 
         // calculeaza noua frecventa maxima a intrebarii 
-        
-        private void calculeaza_frmax()
+
+        private void calculate_max_fr()
         {
-            if(contor==-1)
+            if (counter == -1)
             {
-                incepeSaInveti.Enabled = false;
-                restart_interfata();
+                start_learning.Enabled = false;
+                restart_interface();
                 return;
             }
             try
             {
-                qs = "SELECT MAX(Frecventa) FROM FL WHERE Utilizator = '" + cont.nu + "'";
-                cmd = new SqlCommand (qs, con);
-                frmax = (int)cmd.ExecuteScalar();
+                qs = "SELECT MAX(Frecventa) FROM FL WHERE Utilizator = '" + account.nu + "'";
+                cmd = new SqlCommand(qs, con);
+                max_fr = (int)cmd.ExecuteScalar();
             }
             catch
             {
-                frmax = 0;
-                contor = -1;
+                max_fr = 0;
+                counter = -1;
             }
-            if (frmax == 0)
+            if (max_fr == 0)
             {
-                MessageBox.Show("Felicitari! Ai finalizat procesul de invatare.");
-                incepeSaInveti.Enabled = false;
-                restart_interfata();
+                MessageBox.Show("Congratulations! You have completed the learning process.");
+                start_learning.Enabled = false;
+                restart_interface();
             }
         }
-        //aduce interfata programului la starea initiala dar pastreaza contul utilizatorului
-        private void restart_interfata()
+        private void restart_interface()
         {
-            textIntrebare.Text = "Esti gata pentru o noua sesiune de invatare inteligenta?";
-            textRaspuns.Enabled = false;
-            textRaspuns.Visible = false;
-            verifica.Enabled = false;
-            stergeIntrebarea.Enabled = false;
-            verifica.Visible = false;
-            maiDeparte.Visible = false;
-            stergeIntrebarea.Visible = false;
-            if(cont.nu != string.Empty && contor!=-1)
-                incepeSaInveti.Enabled = true;
+            question_text.Text = "Are you ready for a new smart learning session?";
+            answer_text.Enabled = false;
+            answer_text.Visible = false;
+            check.Enabled = false;
+            delete_question.Enabled = false;
+            check.Visible = false;
+            go_forward.Visible = false;
+            delete_question.Visible = false;
+            if (account.nu != string.Empty && counter != -1)
+                start_learning.Enabled = true;
         }
-        // sterge intrebarea curenta
-        private void sterge()
+
+        private void delete_current_question()
         {
-            qs = "DELETE FROM FL WHERE Id = " + contor;
+            qs = "DELETE FROM FL WHERE Id = " + counter;
             cmd = new SqlCommand(qs, con);
             cmd.ExecuteNonQuery();
-            textIntrebare.Text = string.Empty;
-            textRaspuns.Visible = false;
-            textRaspuns.Enabled = false;
-            textRaspuns.Text = "Scrie aici raspunsul tau";
-            verifica.Enabled = false;
-            stergeIntrebarea.Enabled = false;
-            maiDeparte.Enabled = true;
+            question_text.Text = string.Empty;
+            answer_text.Visible = false;
+            answer_text.Enabled = false;
+            answer_text.Text = "Write your answer here";
+            check.Enabled = false;
+            delete_question.Enabled = false;
+            go_forward.Enabled = true;
         }
-        // sfarsit functii ajutatoare
+
+        // End of utils
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\caval\OneDrive\Desktop\FlashLearning\FlashLearning\FlashLearningDataBase.mdf;Integrated Security=True");
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Apps\FlashLearning\FlashLearning\FlashLearningDataBase.mdf;Integrated Security=True");
             con.Open();
         }
 
-        private void adaugaUnFlashcardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void add_new_item_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // instructiuni vizuale
-            textRaspuns.Enabled = true;
-            textRaspuns.Visible = true;
-            textIntrebare.Text = string.Empty;
-            textRaspuns.Text = "Scrie aici raspunsul";
-            verifica.Enabled = true;
-            stergeIntrebarea.Enabled = true;
-            verifica.Visible = true;
-            maiDeparte.Visible = true;
-            stergeIntrebarea.Visible = true;
-            incepeSaInveti.Enabled = false;
+            // Visuals
+            answer_text.Enabled = true;
+            answer_text.Visible = true;
+            question_text.Text = string.Empty;
+            answer_text.Text = "Write your answer here";
+            check.Enabled = true;
+            delete_question.Enabled = true;
+            check.Visible = true;
+            go_forward.Visible = true;
+            delete_question.Visible = true;
+            start_learning.Enabled = false;
 
-            // afiseaza prima intrebare 
-            initializeaza_contor();
-            calculeaza_frmax();
-            if(frmax>0)
-                afisare();
+            // Print the first question
+            initialize_counter();
+            calculate_max_fr();
+            if (max_fr > 0)
+                print_next_question();
             else
             {
-                incepeSaInveti.Enabled = false;
-                MessageBox.Show("Nu ai intrebari in baze de date!");
-                restart_interfata();
+                start_learning.Enabled = false;
+                MessageBox.Show("There are no question inside the database!");
+                restart_interface();
             }
         }
 
@@ -208,87 +196,87 @@ namespace FlashLearning
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textRaspuns.Text != "Scrie aici raspunsul" && textRaspuns.Text != string.Empty)
+            if (answer_text.Text != "Write your answer here" && answer_text.Text != string.Empty)
             {
-                qs = "SELECT Raspuns FROM FL WHERE Id = " + contor;
+                qs = "SELECT Raspuns FROM FL WHERE Id = " + counter;
                 cmd = new SqlCommand(qs, con);
-                string rasp = (string)cmd.ExecuteScalar();
-                if (rasp == textRaspuns.Text)
+                string answer = (string)cmd.ExecuteScalar();
+                if (answer == answer_text.Text)
                 {
-                    MessageBox.Show("Raspuns corect!");
-                    verifica.Enabled = false;
-                    textRaspuns.Enabled = false;
-                    // decremenatam frecventa
-                    qs = "UPDATE FL SET Frecventa = Frecventa-1 WHERE Id = " + contor;
+                    MessageBox.Show("That is the correct answer!");
+                    check.Enabled = false;
+                    answer_text.Enabled = false;
+                    // Decrease the frequency of the question
+                    qs = "UPDATE FL SET Frecventa = Frecventa-1 WHERE Id = " + counter;
                     cmd = new SqlCommand(qs, con);
                     cmd.ExecuteNonQuery();
-                    qs = "SELECT Frecventa FROM FL WHERE Id =" + contor;
+                    qs = "SELECT Frecventa FROM FL WHERE Id =" + counter;
                     cmd = new SqlCommand(qs, con);
                     int aux = (int)cmd.ExecuteScalar();
                     if (aux == 0)
-                        sterge();
+                        delete_current_question();
                 }
                 else
                 {
-                    MessageBox.Show("Raspuns gresit!");
-                    textRaspuns.Text = "Raspunsul corect este: " + rasp;
-                    textRaspuns.Enabled = false;
-                    // incrementam frecventa
-                    qs = "UPDATE FL SET Frecventa = Frecventa+1 WHERE Id = " + contor;
+                    MessageBox.Show("Wrong answer!");
+                    answer_text.Text = "The correct answer is: " + answer;
+                    answer_text.Enabled = false;
+                    // Increasing the frequence of the question
+                    qs = "UPDATE FL SET Frecventa = Frecventa+1 WHERE Id = " + counter;
                     cmd = new SqlCommand(qs, con);
                     cmd.ExecuteNonQuery();
-                    qs = "SELECT Frecventa FROM FL WHERE Id =" + contor;
+                    qs = "SELECT Frecventa FROM FL WHERE Id =" + counter;
                     cmd = new SqlCommand(qs, con);
                 }
-                verifica.Enabled = false;
-                maiDeparte.Enabled = true;
+                check.Enabled = false;
+                go_forward.Enabled = true;
             }
             else
             {
-                MessageBox.Show("Nu ai introdus raspunsul!");
+                MessageBox.Show("You didn't write a response!");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            creste_contor();
-            afisare();
-            textRaspuns.Visible = true;
-            textRaspuns.Enabled = true;
-            textIntrebare.Visible = true;
-            verifica.Enabled = true;
-            stergeIntrebarea.Enabled = true;
+            increase_counter();
+            print_next_question();
+            answer_text.Visible = true;
+            answer_text.Enabled = true;
+            question_text.Visible = true;
+            check.Enabled = true;
+            delete_question.Enabled = true;
 
-            maiDeparte.Enabled = false;
+            go_forward.Enabled = false;
         }
 
-        private void intraInContToolStripMenuItem_Click(object sender, EventArgs e)
+        private void enter_account_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cont formular = new cont();
-            formular.ShowDialog();
-            if (cont.nu != string.Empty)
+            account form = new account();
+            form.ShowDialog();
+            if (account.nu != string.Empty)
             {
-                label1.Text = cont.nu;
-                intraInCont.Enabled = false;
-                adaugaUnFlashcard.Enabled = true;
-                iesiDinCont.Enabled = true;
-                restart_interfata();
-                initializeaza_contor();
-                calculeaza_frmax();
+                label1.Text = account.nu;
+                enter_account.Enabled = false;
+                add_a_flashcard.Enabled = true;
+                exit_account.Enabled = true;
+                restart_interface();
+                initialize_counter();
+                calculate_max_fr();
             }
         }
 
-        private void iesiDinContToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exit_account_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contor = -1;
-            cont.nu = string.Empty;
+            counter = -1;
+            account.nu = string.Empty;
             label1.Text = string.Empty;
-            intraInCont.Enabled = true;
-            incepeSaInveti.Enabled = false;
-            adaugaUnFlashcard.Enabled = false;
-            iesiDinCont.Enabled = false;
-            restart_interfata();
-            frmax = 0;
+            enter_account.Enabled = true;
+            start_learning.Enabled = false;
+            add_a_flashcard.Enabled = false;
+            exit_account.Enabled = false;
+            restart_interface();
+            max_fr = 0;
         }
 
         private void stergeIntrebarea_Click(object sender, EventArgs e)
@@ -298,7 +286,7 @@ namespace FlashLearning
 
         private void stergeIntrebarea_Click_1(object sender, EventArgs e)
         {
-            sterge();
+            delete_current_question();
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,11 +299,16 @@ namespace FlashLearning
 
         }
 
-        private void ajutor_Click(object sender, EventArgs e)
+        private void question_text_TextChanged(object sender, EventArgs e)
         {
-            ajutor formular = new ajutor();
+
+        }
+
+        private void help_Click(object sender, EventArgs e)
+        {
+            help formular = new help();
             formular.ShowDialog();
-            restart_interfata();
+            restart_interface();
         }
 
         private void ajutorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,12 +318,11 @@ namespace FlashLearning
 
         private void adaugaUnFlashcardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            adaugare formular = new adaugare();
+            add_a_question formular = new add_a_question();
             formular.ShowDialog();
-            initializeaza_contor();
-            restart_interfata();
-            calculeaza_frmax();
-            
+            initialize_counter();
+            restart_interface();
+            calculate_max_fr();
         }
     }
 }

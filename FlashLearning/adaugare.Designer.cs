@@ -1,6 +1,6 @@
 ﻿namespace FlashLearning
 {
-    partial class adaugare
+    partial class add_a_question
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adaugare));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(add_a_question));
             this.textIntrebare = new System.Windows.Forms.TextBox();
             this.figurina = new System.Windows.Forms.PictureBox();
             this.textRaspuns = new System.Windows.Forms.TextBox();
@@ -48,7 +48,7 @@
             this.textIntrebare.Name = "textIntrebare";
             this.textIntrebare.Size = new System.Drawing.Size(605, 341);
             this.textIntrebare.TabIndex = 3;
-            this.textIntrebare.Text = "Scrie aici intrebarea";
+            this.textIntrebare.Text = "Write here your question";
             // 
             // figurina
             // 
@@ -71,7 +71,7 @@
             this.textRaspuns.Name = "textRaspuns";
             this.textRaspuns.Size = new System.Drawing.Size(605, 121);
             this.textRaspuns.TabIndex = 6;
-            this.textRaspuns.Text = "Scrie aici raspunsul";
+            this.textRaspuns.Text = "Write here the correct answer";
             // 
             // adaugaIntrebarea
             // 
@@ -84,7 +84,7 @@
             this.adaugaIntrebarea.Name = "adaugaIntrebarea";
             this.adaugaIntrebarea.Size = new System.Drawing.Size(282, 46);
             this.adaugaIntrebarea.TabIndex = 7;
-            this.adaugaIntrebarea.Text = "Adauga intrebarea";
+            this.adaugaIntrebarea.Text = "Add question";
             this.adaugaIntrebarea.UseVisualStyleBackColor = false;
             this.adaugaIntrebarea.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -99,11 +99,11 @@
             this.renunta.Name = "renunta";
             this.renunta.Size = new System.Drawing.Size(143, 46);
             this.renunta.TabIndex = 8;
-            this.renunta.Text = "Renunta";
+            this.renunta.Text = "Give up";
             this.renunta.UseVisualStyleBackColor = false;
             this.renunta.Click += new System.EventHandler(this.button1_Click);
             // 
-            // adaugare
+            // add_a_question
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,7 +115,7 @@
             this.Controls.Add(this.textRaspuns);
             this.Controls.Add(this.textIntrebare);
             this.Controls.Add(this.figurina);
-            this.Name = "adaugare";
+            this.Name = "add_a_question";
             this.Text = "adaugare";
             this.Load += new System.EventHandler(this.form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.figurina)).EndInit();

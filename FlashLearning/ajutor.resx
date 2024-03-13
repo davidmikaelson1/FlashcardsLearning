@@ -118,9 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>1. Intră în cont folosind meniul cont. Dacă nu ai un cont, creează-ți unul folosind un username nou.
-2. Adaugă întrebări în baza de date folosind formularul de adăugare întrebări.
-3. Începe procesul de învățare apăsând butonul dedicat din meniu.
-4. Dacă răspunzi corect de două ori la aceeași întrebare, aceasta va fi eliminată din baza de date, iar dacă răspunzi greșit la o întrebare, numărul afișărilor acelei întrebări va crește.</value>
+    <value>1. Log in to your account using the account menu. If you don't have an account, create one using a new username.
+2. Add questions to the database using the add questions form.
+3. Start the learning process by pressing the dedicated button in the menu.
+4. If you answer the same question correctly twice, it will be removed from the database, and if you answer a question incorrectly, the number of impressions of that question will increase.
+</value>
   </data>
 </root>

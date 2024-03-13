@@ -1,6 +1,6 @@
 ﻿namespace FlashLearning
 {
-    partial class ajutor
+    partial class help
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ajutor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(help));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(529, 44);
             this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Ghid de utilizare al aplicației de învățare\r\n";
+            this.textBox2.Text = "Learning App User Guide";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
@@ -66,11 +66,11 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 46);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Închide";
+            this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ajutor
+            // help
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,7 +79,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "ajutor";
+            this.Name = "help";
             this.Text = "ajutor";
             this.ResumeLayout(false);
             this.PerformLayout();

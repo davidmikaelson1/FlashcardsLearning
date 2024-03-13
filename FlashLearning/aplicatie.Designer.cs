@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(aplicatie));
             this.meniu = new System.Windows.Forms.MenuStrip();
             this.meniuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.incepeSaInveti = new System.Windows.Forms.ToolStripMenuItem();
-            this.adaugaUnFlashcard = new System.Windows.Forms.ToolStripMenuItem();
+            this.start_learning = new System.Windows.Forms.ToolStripMenuItem();
+            this.add_a_flashcard = new System.Windows.Forms.ToolStripMenuItem();
             this.ajutor = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.intraInCont = new System.Windows.Forms.ToolStripMenuItem();
-            this.iesiDinCont = new System.Windows.Forms.ToolStripMenuItem();
+            this.enter_account = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit_account = new System.Windows.Forms.ToolStripMenuItem();
             this.figurina = new System.Windows.Forms.PictureBox();
-            this.textIntrebare = new System.Windows.Forms.TextBox();
-            this.textRaspuns = new System.Windows.Forms.TextBox();
-            this.verifica = new System.Windows.Forms.Button();
-            this.maiDeparte = new System.Windows.Forms.Button();
+            this.question_text = new System.Windows.Forms.TextBox();
+            this.answer_text = new System.Windows.Forms.TextBox();
+            this.check = new System.Windows.Forms.Button();
+            this.go_forward = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.stergeIntrebarea = new System.Windows.Forms.Button();
+            this.delete_question = new System.Windows.Forms.Button();
             this.meniu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.figurina)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             this.loginToolStripMenuItem});
             this.meniu.Location = new System.Drawing.Point(0, 0);
             this.meniu.Name = "meniu";
-            this.meniu.Size = new System.Drawing.Size(1058, 44);
+            this.meniu.Size = new System.Drawing.Size(1058, 46);
             this.meniu.TabIndex = 0;
             this.meniu.Text = "menuStrip1";
             this.meniu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.meniu_ItemClicked);
@@ -67,77 +67,77 @@
             // 
             this.meniuToolStripMenuItem.BackColor = System.Drawing.Color.AntiqueWhite;
             this.meniuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.incepeSaInveti,
-            this.adaugaUnFlashcard,
+            this.start_learning,
+            this.add_a_flashcard,
             this.ajutor});
             this.meniuToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.meniuToolStripMenuItem.ForeColor = System.Drawing.Color.Maroon;
             this.meniuToolStripMenuItem.Name = "meniuToolStripMenuItem";
             this.meniuToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
-            this.meniuToolStripMenuItem.Size = new System.Drawing.Size(109, 40);
-            this.meniuToolStripMenuItem.Text = "Meniu";
+            this.meniuToolStripMenuItem.Size = new System.Drawing.Size(100, 42);
+            this.meniuToolStripMenuItem.Text = "Menu";
             this.meniuToolStripMenuItem.Click += new System.EventHandler(this.meniuToolStripMenuItem_Click);
             // 
-            // incepeSaInveti
+            // start_learning
             // 
-            this.incepeSaInveti.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.incepeSaInveti.Enabled = false;
-            this.incepeSaInveti.ForeColor = System.Drawing.Color.Maroon;
-            this.incepeSaInveti.Name = "incepeSaInveti";
-            this.incepeSaInveti.Size = new System.Drawing.Size(408, 44);
-            this.incepeSaInveti.Text = "Incepe sa inveti";
-            this.incepeSaInveti.Click += new System.EventHandler(this.adaugaUnFlashcardToolStripMenuItem_Click);
+            this.start_learning.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.start_learning.Enabled = false;
+            this.start_learning.ForeColor = System.Drawing.Color.Maroon;
+            this.start_learning.Name = "start_learning";
+            this.start_learning.Size = new System.Drawing.Size(403, 44);
+            this.start_learning.Text = "Start learning";
+            this.start_learning.Click += new System.EventHandler(this.add_new_item_ToolStripMenuItem_Click);
             // 
-            // adaugaUnFlashcard
+            // add_a_flashcard
             // 
-            this.adaugaUnFlashcard.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.adaugaUnFlashcard.Enabled = false;
-            this.adaugaUnFlashcard.ForeColor = System.Drawing.Color.Maroon;
-            this.adaugaUnFlashcard.Name = "adaugaUnFlashcard";
-            this.adaugaUnFlashcard.Size = new System.Drawing.Size(408, 44);
-            this.adaugaUnFlashcard.Text = "Adauga un flashcard";
-            this.adaugaUnFlashcard.Click += new System.EventHandler(this.adaugaUnFlashcardToolStripMenuItem1_Click);
+            this.add_a_flashcard.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.add_a_flashcard.Enabled = false;
+            this.add_a_flashcard.ForeColor = System.Drawing.Color.Maroon;
+            this.add_a_flashcard.Name = "add_a_flashcard";
+            this.add_a_flashcard.Size = new System.Drawing.Size(403, 44);
+            this.add_a_flashcard.Text = "Add a new flashcard";
+            this.add_a_flashcard.Click += new System.EventHandler(this.adaugaUnFlashcardToolStripMenuItem1_Click);
             // 
             // ajutor
             // 
             this.ajutor.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ajutor.ForeColor = System.Drawing.Color.Maroon;
             this.ajutor.Name = "ajutor";
-            this.ajutor.Size = new System.Drawing.Size(408, 44);
-            this.ajutor.Text = "Ajutor";
-            this.ajutor.Click += new System.EventHandler(this.ajutor_Click);
+            this.ajutor.Size = new System.Drawing.Size(403, 44);
+            this.ajutor.Text = "Help";
+            this.ajutor.Click += new System.EventHandler(this.help_Click);
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.BackColor = System.Drawing.Color.AntiqueWhite;
             this.loginToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.intraInCont,
-            this.iesiDinCont});
+            this.enter_account,
+            this.exit_account});
             this.loginToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginToolStripMenuItem.ForeColor = System.Drawing.Color.Maroon;
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(99, 40);
-            this.loginToolStripMenuItem.Text = "Cont";
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(145, 42);
+            this.loginToolStripMenuItem.Text = "Account";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
-            // intraInCont
+            // enter_account
             // 
-            this.intraInCont.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.intraInCont.ForeColor = System.Drawing.Color.Maroon;
-            this.intraInCont.Name = "intraInCont";
-            this.intraInCont.Size = new System.Drawing.Size(292, 44);
-            this.intraInCont.Text = "Intra in cont";
-            this.intraInCont.Click += new System.EventHandler(this.intraInContToolStripMenuItem_Click);
+            this.enter_account.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.enter_account.ForeColor = System.Drawing.Color.Maroon;
+            this.enter_account.Name = "enter_account";
+            this.enter_account.Size = new System.Drawing.Size(226, 44);
+            this.enter_account.Text = "Log in";
+            this.enter_account.Click += new System.EventHandler(this.enter_account_ToolStripMenuItem_Click);
             // 
-            // iesiDinCont
+            // exit_account
             // 
-            this.iesiDinCont.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.iesiDinCont.Enabled = false;
-            this.iesiDinCont.ForeColor = System.Drawing.Color.Maroon;
-            this.iesiDinCont.Name = "iesiDinCont";
-            this.iesiDinCont.Size = new System.Drawing.Size(292, 44);
-            this.iesiDinCont.Text = "Iesi din cont";
-            this.iesiDinCont.Click += new System.EventHandler(this.iesiDinContToolStripMenuItem_Click);
+            this.exit_account.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.exit_account.Enabled = false;
+            this.exit_account.ForeColor = System.Drawing.Color.Maroon;
+            this.exit_account.Name = "exit_account";
+            this.exit_account.Size = new System.Drawing.Size(226, 44);
+            this.exit_account.Text = "Log out";
+            this.exit_account.Click += new System.EventHandler(this.exit_account_ToolStripMenuItem_Click);
             // 
             // figurina
             // 
@@ -149,68 +149,69 @@
             this.figurina.TabIndex = 1;
             this.figurina.TabStop = false;
             // 
-            // textIntrebare
+            // question_text
             // 
-            this.textIntrebare.BackColor = System.Drawing.Color.Wheat;
-            this.textIntrebare.Enabled = false;
-            this.textIntrebare.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textIntrebare.ForeColor = System.Drawing.Color.Black;
-            this.textIntrebare.Location = new System.Drawing.Point(12, 80);
-            this.textIntrebare.Margin = new System.Windows.Forms.Padding(0);
-            this.textIntrebare.Multiline = true;
-            this.textIntrebare.Name = "textIntrebare";
-            this.textIntrebare.Size = new System.Drawing.Size(618, 341);
-            this.textIntrebare.TabIndex = 2;
-            this.textIntrebare.Text = "Esti gata pentru o noua sesiune de invatare inteligenta?";
+            this.question_text.BackColor = System.Drawing.Color.Wheat;
+            this.question_text.Enabled = false;
+            this.question_text.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.question_text.ForeColor = System.Drawing.Color.Black;
+            this.question_text.Location = new System.Drawing.Point(12, 80);
+            this.question_text.Margin = new System.Windows.Forms.Padding(0);
+            this.question_text.Multiline = true;
+            this.question_text.Name = "question_text";
+            this.question_text.Size = new System.Drawing.Size(618, 341);
+            this.question_text.TabIndex = 2;
+            this.question_text.Text = "Are you ready for a new smart learning session?";
+            this.question_text.TextChanged += new System.EventHandler(this.question_text_TextChanged);
             // 
-            // textRaspuns
+            // answer_text
             // 
-            this.textRaspuns.BackColor = System.Drawing.Color.Wheat;
-            this.textRaspuns.Enabled = false;
-            this.textRaspuns.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textRaspuns.ForeColor = System.Drawing.Color.Black;
-            this.textRaspuns.Location = new System.Drawing.Point(12, 431);
-            this.textRaspuns.Margin = new System.Windows.Forms.Padding(0);
-            this.textRaspuns.Multiline = true;
-            this.textRaspuns.Name = "textRaspuns";
-            this.textRaspuns.Size = new System.Drawing.Size(618, 121);
-            this.textRaspuns.TabIndex = 3;
-            this.textRaspuns.Text = "Scrie aici raspunsul tau";
-            this.textRaspuns.Visible = false;
+            this.answer_text.BackColor = System.Drawing.Color.Wheat;
+            this.answer_text.Enabled = false;
+            this.answer_text.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answer_text.ForeColor = System.Drawing.Color.Black;
+            this.answer_text.Location = new System.Drawing.Point(12, 431);
+            this.answer_text.Margin = new System.Windows.Forms.Padding(0);
+            this.answer_text.Multiline = true;
+            this.answer_text.Name = "answer_text";
+            this.answer_text.Size = new System.Drawing.Size(618, 121);
+            this.answer_text.TabIndex = 3;
+            this.answer_text.Text = "Write your answer here";
+            this.answer_text.Visible = false;
             // 
-            // verifica
+            // check
             // 
-            this.verifica.AutoSize = true;
-            this.verifica.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.verifica.Enabled = false;
-            this.verifica.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verifica.ForeColor = System.Drawing.Color.Maroon;
-            this.verifica.Location = new System.Drawing.Point(288, 558);
-            this.verifica.Margin = new System.Windows.Forms.Padding(0);
-            this.verifica.Name = "verifica";
-            this.verifica.Size = new System.Drawing.Size(133, 46);
-            this.verifica.TabIndex = 4;
-            this.verifica.Text = "Verifica";
-            this.verifica.UseVisualStyleBackColor = false;
-            this.verifica.Visible = false;
-            this.verifica.Click += new System.EventHandler(this.button1_Click);
+            this.check.AutoSize = true;
+            this.check.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.check.Enabled = false;
+            this.check.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check.ForeColor = System.Drawing.Color.Maroon;
+            this.check.Location = new System.Drawing.Point(262, 558);
+            this.check.Margin = new System.Windows.Forms.Padding(0);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(157, 46);
+            this.check.TabIndex = 4;
+            this.check.Text = "Check";
+            this.check.UseVisualStyleBackColor = false;
+            this.check.Visible = false;
+            this.check.Click += new System.EventHandler(this.button1_Click);
             // 
-            // maiDeparte
+            // go_forward
             // 
-            this.maiDeparte.AutoSize = true;
-            this.maiDeparte.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.maiDeparte.Enabled = false;
-            this.maiDeparte.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maiDeparte.ForeColor = System.Drawing.Color.Maroon;
-            this.maiDeparte.Location = new System.Drawing.Point(429, 558);
-            this.maiDeparte.Margin = new System.Windows.Forms.Padding(0);
-            this.maiDeparte.Name = "maiDeparte";
-            this.maiDeparte.Size = new System.Drawing.Size(194, 46);
-            this.maiDeparte.TabIndex = 5;
-            this.maiDeparte.Text = "Mai departe";
-            this.maiDeparte.UseVisualStyleBackColor = false;
-            this.maiDeparte.Visible = false;
-            this.maiDeparte.Click += new System.EventHandler(this.button2_Click);
+            this.go_forward.AutoSize = true;
+            this.go_forward.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.go_forward.Enabled = false;
+            this.go_forward.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.go_forward.ForeColor = System.Drawing.Color.Maroon;
+            this.go_forward.Location = new System.Drawing.Point(427, 558);
+            this.go_forward.Margin = new System.Windows.Forms.Padding(0);
+            this.go_forward.Name = "go_forward";
+            this.go_forward.Size = new System.Drawing.Size(213, 46);
+            this.go_forward.TabIndex = 5;
+            this.go_forward.Text = "Next question";
+            this.go_forward.UseVisualStyleBackColor = false;
+            this.go_forward.Visible = false;
+            this.go_forward.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -223,22 +224,22 @@
             this.label1.TabIndex = 7;
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // stergeIntrebarea
+            // delete_question
             // 
-            this.stergeIntrebarea.AutoSize = true;
-            this.stergeIntrebarea.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.stergeIntrebarea.Enabled = false;
-            this.stergeIntrebarea.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stergeIntrebarea.ForeColor = System.Drawing.Color.Maroon;
-            this.stergeIntrebarea.Location = new System.Drawing.Point(12, 558);
-            this.stergeIntrebarea.Margin = new System.Windows.Forms.Padding(0);
-            this.stergeIntrebarea.Name = "stergeIntrebarea";
-            this.stergeIntrebarea.Size = new System.Drawing.Size(262, 46);
-            this.stergeIntrebarea.TabIndex = 8;
-            this.stergeIntrebarea.Text = "Sterge intrebarea";
-            this.stergeIntrebarea.UseVisualStyleBackColor = false;
-            this.stergeIntrebarea.Visible = false;
-            this.stergeIntrebarea.Click += new System.EventHandler(this.stergeIntrebarea_Click_1);
+            this.delete_question.AutoSize = true;
+            this.delete_question.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.delete_question.Enabled = false;
+            this.delete_question.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete_question.ForeColor = System.Drawing.Color.Maroon;
+            this.delete_question.Location = new System.Drawing.Point(12, 558);
+            this.delete_question.Margin = new System.Windows.Forms.Padding(0);
+            this.delete_question.Name = "delete_question";
+            this.delete_question.Size = new System.Drawing.Size(241, 46);
+            this.delete_question.TabIndex = 8;
+            this.delete_question.Text = "Delete question";
+            this.delete_question.UseVisualStyleBackColor = false;
+            this.delete_question.Visible = false;
+            this.delete_question.Click += new System.EventHandler(this.stergeIntrebarea_Click_1);
             // 
             // aplicatie
             // 
@@ -247,12 +248,12 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(1058, 664);
-            this.Controls.Add(this.stergeIntrebarea);
+            this.Controls.Add(this.delete_question);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.maiDeparte);
-            this.Controls.Add(this.verifica);
-            this.Controls.Add(this.textRaspuns);
-            this.Controls.Add(this.textIntrebare);
+            this.Controls.Add(this.go_forward);
+            this.Controls.Add(this.check);
+            this.Controls.Add(this.answer_text);
+            this.Controls.Add(this.question_text);
             this.Controls.Add(this.figurina);
             this.Controls.Add(this.meniu);
             this.MainMenuStrip = this.meniu;
@@ -272,19 +273,19 @@
 
         private System.Windows.Forms.MenuStrip meniu;
         private System.Windows.Forms.ToolStripMenuItem meniuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem incepeSaInveti;
-        private System.Windows.Forms.ToolStripMenuItem adaugaUnFlashcard;
+        private System.Windows.Forms.ToolStripMenuItem start_learning;
+        private System.Windows.Forms.ToolStripMenuItem add_a_flashcard;
         private System.Windows.Forms.ToolStripMenuItem ajutor;
         private System.Windows.Forms.PictureBox figurina;
-        private System.Windows.Forms.TextBox textIntrebare;
-        private System.Windows.Forms.TextBox textRaspuns;
-        private System.Windows.Forms.Button verifica;
-        private System.Windows.Forms.Button maiDeparte;
+        private System.Windows.Forms.TextBox question_text;
+        private System.Windows.Forms.TextBox answer_text;
+        private System.Windows.Forms.Button check;
+        private System.Windows.Forms.Button go_forward;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem intraInCont;
-        private System.Windows.Forms.ToolStripMenuItem iesiDinCont;
+        private System.Windows.Forms.ToolStripMenuItem enter_account;
+        private System.Windows.Forms.ToolStripMenuItem exit_account;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button stergeIntrebarea;
+        private System.Windows.Forms.Button delete_question;
     }
 }
 

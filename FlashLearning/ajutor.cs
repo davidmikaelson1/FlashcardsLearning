@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlashLearning
 {
-    public partial class ajutor : Form
+    public partial class help : Form
     {
-        public ajutor()
+        public help()
         {
             InitializeComponent();
         }
